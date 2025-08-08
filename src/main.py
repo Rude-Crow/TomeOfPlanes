@@ -1,12 +1,16 @@
 from kivy.app import App
-from kivy.lang import Builder
-from city_logic import CityManager
+from kivy.uix.screenmanager import ScreenManager, Screen
+from ui.planes_manager_page import PlanesManager
 
-class CityOfHoldingApp(App):
+class MainScreen(Screen):
+    pass
+
+class TomeApp(App):
     def build(self):
-        self.title = "City of Holding"
-        Builder.load_file("city_gui.kv")
-        return CityManager()
+        sm = ScreenManager()
+        sm.add_widget(MainScreen(name="main"))
+        sm.add_widget(PlanesManager(name="planes"))
+        return sm
 
-if __name__ == "__main__":
-    CityOfHoldingApp().run()
+if __name__ == '__main__':
+    TomeApp().run()

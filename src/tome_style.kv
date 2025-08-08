@@ -1,0 +1,36 @@
+<ArcaneButton@Button>:
+    font_name: app.theme.HeaderFont
+    font_size: '20sp'
+    background_normal: ''
+    background_color: app.theme.ButtonBackground
+    color: app.theme.PrimaryTextColor
+    canvas.before:
+        Color:
+            rgba: app.theme.BorderColor
+        Line:
+            width: 1.5
+            rectangle: self.x, self.y, self.width, self.height
+
+<RunedLabel@Label>:
+    font_name: app.theme.BodyFont
+    font_size: '16sp'
+    color: app.theme.PrimaryTextColor
+    canvas.before:
+        Color:
+            rgba: app.theme.BackgroundColor
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [6]
+
+<PageCard@BoxLayout>:
+    orientation: 'vertical'
+    padding: [20, 20]
+    spacing: 10
+    canvas.before:
+        Color:
+            rgba: app.theme.BackgroundColor
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [12]

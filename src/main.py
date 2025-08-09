@@ -1,18 +1,11 @@
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.lang import Builder
-
-Builder.load_file("tome_style.kv")
-
-
-class OpenBookLayout(BoxLayout):
-    pass
-
+from data.tables_and_relations import init_db
+from ui.open_book_ui import OpenBookLayout
 
 class TomeOfPlanes(App):
     def build(self):
+        init_db()  # Ensure DB tables are created
         return OpenBookLayout()
-
 
 if __name__ == "__main__":
     TomeOfPlanes().run()

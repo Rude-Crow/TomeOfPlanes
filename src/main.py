@@ -1,11 +1,13 @@
-from kivy.app import App
-from data.tables_and_relations import init_db
-from ui.open_book_ui import OpenBookLayout
-
-class TomeOfPlanes(App):
-    def build(self):
-        init_db()  # Ensure DB tables are created
-        return OpenBookLayout()
+# main.py
+from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import Qt
+import sys
+from tome_controller import TomeController
 
 if __name__ == "__main__":
-    TomeOfPlanes().run()
+    # Enable high DPI scaling
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
+    
+    app = QApplication(sys.argv)
+    controller = TomeController()
+    sys.exit(app.exec())

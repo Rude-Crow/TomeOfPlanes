@@ -41,7 +41,6 @@ class TomeOfPlanesUI(QMainWindow):
         """)
     
     def create_sidebar(self):
-        """Create an empty sidebar structure"""
         sidebar = QFrame()
         sidebar.setFixedWidth(240)
         sidebar.setStyleSheet("""
@@ -53,7 +52,7 @@ class TomeOfPlanesUI(QMainWindow):
         
         self.sidebar_layout = QVBoxLayout(sidebar)
         self.sidebar_layout.setSpacing(5)
-        self.sidebar_layout.setContentsMargins(10, 10, 10, 10)
+        self.sidebar_layout.setContentsMargins(10, 60, 5, 20)
         
         # Add title
         title = QLabel("TOME OF PLANES")
@@ -69,7 +68,7 @@ class TomeOfPlanesUI(QMainWindow):
         deco.setAlignment(Qt.AlignCenter)
         self.sidebar_layout.addWidget(deco)
         
-        # Add spacer
+        # Create spacer
         self.sidebar_layout.addSpacing(20)
         
         # Create container for navigation buttons
@@ -90,7 +89,7 @@ class TomeOfPlanesUI(QMainWindow):
         self.sidebar_layout.addStretch()
         
         # Add footer
-        footer = QLabel("© 2025 Tome of Planes")
+        footer = QLabel("© 2025 Tome Of Planes")
         footer.setFont(QFont("Georgia", 10))
         footer.setStyleSheet("color: #a09070;")
         footer.setAlignment(Qt.AlignCenter)
@@ -128,6 +127,22 @@ class TomeOfPlanesUI(QMainWindow):
         btn.setFont(self.font)
         self.action_buttons_layout.addWidget(btn)
         return btn
+    
+    def clear_nav_buttons(self):
+        """Clear all navigation buttons"""
+        while self.nav_buttons_layout.count():
+            item = self.nav_buttons_layout.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.deleteLater()
+    
+    def clear_action_buttons(self):
+        """Clear all action buttons"""
+        while self.action_buttons_layout.count():
+            item = self.action_buttons_layout.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.deleteLater()
     
     def add_page(self, widget):
         """Add a page to the content area"""

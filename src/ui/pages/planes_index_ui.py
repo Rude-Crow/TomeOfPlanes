@@ -100,6 +100,10 @@ class PlanesIndexUI(QWidget):
         self.right_list.itemClicked.connect(self.on_plane_clicked)
     
     def on_plane_clicked(self, item):
-        # Placeholder for plane click action
+        """Handle plane item click"""
         plane_id = item.data(Qt.UserRole)
-        print(f"Plane clicked: {plane_id}")
+        self.controller.show_plane_details(plane_id)
+        
+        # For now, just show a back button in sidebar
+        self.controller.current_sidebar_state = "details"
+        self.controller.update_sidebar()
